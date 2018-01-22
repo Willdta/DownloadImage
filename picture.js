@@ -1,0 +1,21 @@
+// // require `request` and the Node `fs` (filesystem) module
+var request = require('request');
+var fs = require('fs');
+
+// request.get('https://sytantris.github.io/http-examples')               // Note 1
+//        .on('error', function (err) {                                   // Note 2
+//          throw err; 
+//        })
+//        .on('response', function (response) {                           // Note 3
+//          console.log('Response Status Code: ', response.statusCode);
+//        })
+//        .pipe(fs.createWriteStream('./downloaded.html')); 
+
+request.get('https://sytantris.github.io/http-examples/future.jpg')
+	.on('error', () => {
+		throw err;
+	})
+	.on('response', (response) => {
+		console.log('Status Code: ', response.statusCode)
+	})
+	.pipe(fs.createWriteStream('./future.jpg'));
